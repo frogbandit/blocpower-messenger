@@ -52,18 +52,18 @@ def send_message(token, recipient, text):
 		zipcode_dict = json.load(zipcode_dict)
 		print('in here')
 		print(zipcode_dict)
-		if (zipcode == 'hello' or text == "I can't echo this"):
-			r = requests.post("https://graph.facebook.com/v2.6/me/messages",
-				params={"access_token": token},
-				data=json.dumps({
-					"recipient": {"id": recipient},
-					"message": {"text": "Could not understand your request. Please try again."}
-				}),
-				headers={'Content-type': 'application/json'})
-			if r.status_code != requests.codes.ok:
-				print(r.text)
+		# if (zipcode == 'hello' or text == "I can't echo this"):
+		# 	r = requests.post("https://graph.facebook.com/v2.6/me/messages",
+		# 		params={"access_token": token},
+		# 		data=json.dumps({
+		# 			"recipient": {"id": recipient},
+		# 			"message": {"text": "Could not understand your request. Please try again."}
+		# 		}),
+		# 		headers={'Content-type': 'application/json'})
+		# 	if r.status_code != requests.codes.ok:
+		# 		print(r.text)
 
-		elif zipcode_dict[zipcode]:
+		if zipcode_dict[zipcode]:
 			num_occurrences = zipcode_dict[zipcode]
 			print(num_occurrences)
 			r = requests.post("https://graph.facebook.com/v2.6/me/messages",
